@@ -41,11 +41,6 @@
             "default": true,
             "description": "Whether to install Krew, the kubectl plugin manager"
         },
-        "krew_plugins": {
-            "type": "array",
-            "default": ["ctx", "ns"],
-            "description": "List of Krew plugins to install by default"
-        },
         "k9s": {
             "type": "boolean",
             "default": true,
