@@ -1,5 +1,5 @@
 {
-    "id": "cloud-essentials-tools",
+    "id": "cloud-essentials",
     "name": "Cloud essentials for convinience",
     "version": "1.0.0",
     "documentationURL": "https://github.com/devcontainers/features/tree/main/src/kubectl-helm-minikube-krew",
