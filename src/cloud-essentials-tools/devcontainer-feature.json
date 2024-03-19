@@ -1,0 +1,86 @@
+{
+    "id": "cloud-essentials-tools",
+    "name": "Cloud essentials for convinience",
+    "documentationURL": "https://github.com/devcontainers/features/tree/main/src/kubectl-helm-minikube-krew",
+    "description": "Installs the latest versions of kubectl, Helm, Minikube, Krew with kubectx, kubens plugins, NATS tools, Task automation, Teller, Kubeseal, cilium. Auto-detects latest versions and installs needed dependencies.",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "none",
+                "1.23",
+                "1.22",
+                "1.21",
+                "none"
+            ],
+            "default": "latest",
+            "description": "Select or enter a Kubernetes version to install"
+        },
+        "helm": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "none"
+            ],
+            "default": "latest",
+            "description": "Select or enter a Helm version to install"
+        },
+        "minikube": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "none"
+            ],
+            "default": "latest",
+            "description": "Select or enter a Minikube version to install"
+        },
+        "krew": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to install Krew, the kubectl plugin manager"
+        },
+        "krew_plugins": {
+            "type": "array",
+            "default": ["ctx", "ns"],
+            "description": "List of Krew plugins to install by default"
+        },
+        "k9s": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to install k9s, the k8s gui"
+        },
+        "cilium": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to install cilium cli"
+        },
+        "teller": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to install teller secret manager"
+        },
+        "nats": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to install NATs tools"
+        },
+        "task": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to install Task automation tool"
+        }
+
+    },
+    "mounts": [
+        {
+            "source": "minikube-config",
+            "target": "/home/vscode/.minikube",
+            "type": "volume"
+        }
+    ],
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/go"
+    ]
+}
