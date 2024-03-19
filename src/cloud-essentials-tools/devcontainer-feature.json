@@ -1,6 +1,7 @@
 {
     "id": "cloud-essentials-tools",
     "name": "Cloud essentials for convinience",
+    "version": "1.0.0",
     "documentationURL": "https://github.com/devcontainers/features/tree/main/src/kubectl-helm-minikube-krew",
     "description": "Installs the latest versions of kubectl, Helm, Minikube, Krew with kubectx, kubens plugins, NATS tools, Task automation, Teller, Kubeseal, cilium. Auto-detects latest versions and installs needed dependencies.",
     "options": {
