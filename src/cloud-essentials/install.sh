@@ -555,7 +555,7 @@ if [ "${PULUMI_INSTALL}" = "true" ]; then
 
     fi
 
-    echo "Successfully installed nats tools..."
+    echo "Successfully installed pulumi tools..."
 
 fi
 
