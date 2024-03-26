@@ -65,6 +65,11 @@
             "type": "boolean",
             "default": true,
             "description": "Whether to install Task automation tool"
+        },
+        "pulumi": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to install pulumi cli and esc"
         }
 
     },

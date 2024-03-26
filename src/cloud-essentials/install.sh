@@ -38,6 +38,7 @@ K9S_INSTALL="${K9S_INSTALL:-"true"}"
 CILIUM_CLI_INSTALL="${CILIUM_CLI_INSTALL:-"true"}"
 NATS_INSTALL="${NATS_INSTALL:-"true"}"
 TASK_INSTALL="${TASK_INSTALL:-"true"}"
+PULUMI_INSTALL="${PULUMI_INSTALL:-"true"}"
 
 if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
@@ -526,6 +527,35 @@ if [ "${TASK_INSTALL}" = "true" ]; then
          echo "Successfully installed task automation.."
 
     )'
+
+fi
+
+
+# Install Pulumi tools
+if [ "${PULUMI_INSTALL}" = "true" ]; then
+
+    sudo -u "${USERNAME}" /bin/bash -c '(
+
+        echo "Installing pulumi cli..."
+        curl -fsSL https://get.pulumi.com | sh
+        
+        echo "Installing nats esc..."
+        curl -fsSL https://get.pulumi.com/esc/install.sh | sh
+    )'
+
+    echo "Updating PATH in .bashrc and .zshrc..."
+    echo 'export PATH="$PATH:${HOME}/.pulumi/bin"' >> ${USERHOME}/.bashrc
+    echo 'export PATH="$PATH:${HOME}/.pulumi/bin"' >> ${USERHOME}/.zshrc
+    
+
+    # Zsh: assuming .oh-my-zsh is installed for the user
+    if [ -d "/home/${USERNAME}/.oh-my-zsh" ]; then
+        /home/${USERNAME}/.pulumi/bin/pulumi gen-completion zsh --color always -e > "/home/${USERNAME}/.oh-my-zsh/completions/_pulumi"
+        /home/${USERNAME}/.pulumi/bin/esc completion zsh > "/home/${USERNAME}/.oh-my-zsh/completions/_esc"
+
+    fi
+
+    echo "Successfully installed nats tools..."
 
 fi
 
